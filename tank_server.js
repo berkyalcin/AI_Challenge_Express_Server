@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
 
-var dataToShow = "";
+var data = "";
 
 app.get('/', (req, res) => {
-    res.send(dataToShow);
+    res.send(data);
 });
 
 app.post('/', (req, res) => {
     res.send("worked");
-    dataToShow = JSON.parse(req.url.substring(2));
-    console.log(dataToShow)
+    data = JSON.parse(req.url.substring(2));
+    console.log(data)
 })
 
-app.listen(3000, () => console.log('Gator app listening on port 3000!'));
+app.listen(3000, () => console.log('listening on port 3000'));
