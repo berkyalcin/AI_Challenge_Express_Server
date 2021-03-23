@@ -2,9 +2,10 @@ const express = require('express');
 var bodyParser = require('body-parser')
 
 const app = express();
+
 var jsonParser = bodyParser.json()
 
-var data = "";
+var data="";
 
 app.get('/', (req, res) => {
     res.send(data);
@@ -16,4 +17,4 @@ app.post('/', jsonParser, (req, res) => {
     console.log(data)
 })
 
-app.listen(3000, () => console.log('listening on port 3000'));
+app.listen(5000, () => console.log('listening on port 5000'));
