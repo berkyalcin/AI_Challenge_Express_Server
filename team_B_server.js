@@ -5,7 +5,7 @@ const app = express();
 
 var jsonParser = bodyParser.json()
 
-var data="";
+var data = {"m": 0, "r":0, "f":0};
 
 app.get('/', (req, res) => {
     res.send(data);

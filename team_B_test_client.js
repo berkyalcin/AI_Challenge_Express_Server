@@ -1,16 +1,44 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var http = require('http');
 
-var http = new XMLHttpRequest();
-var url = 'http://127.0.0.1:5000';
-http.open('POST', url);
+var options = {
+  host: 'localhost',
+  path: '/',
+  port: '5000',
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'}
+};
 
-//Send the proper header information along with the request
-http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-http.onreadystatechange = function() {//Call a function when the state changes.
-    if(http.readyState == 4 && http.status == 200) {
-        console.log(http.responseText);
-    }
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
-http.send(JSON.stringify({"m": -1, "r":1, "f":0}));
+  
 
+callback = function(response) {
+    var str = ''
+    response.on('data', function (chunk) {
+      str += chunk;
+    });
+    response.on('end', function () {
+      console.log(str);
+    });
+}
+
+async function executeCommands(){
+    var req = http.request(options, callback);
+    req.write(JSON.stringify({"m": 1, "r":-1, "f":0}));
+    req.end();
+    await wait(1000)
+    var req = http.request(options, callback);
+    req.write(JSON.stringify({"m": 1, "r":0, "f":0}));
+    req.end();
+    await wait(3000)
+    var req = http.request(options, callback);
+    req.write(JSON.stringify({"m": 0, "r":-1, "f":0}));
+    req.end();
+    await wait(1000)
+    var req = http.request(options, callback);
+    req.write(JSON.stringify({"m": 0, "r":0, "f":1}));
+    req.end();
+}
+
+executeCommands()
