@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "start_all": "node tank_server.js & node team_A_server.js & node team_B_server.js"
+  },
+  "name": "tankserver",
+  "description": "The express servers to run the game",
+  "version": "1.0.0",
+  "main": "tank_server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SAC-PhoeniX/AI_Challenge_Express_Server.git"
+  },
+  "author": "Cihan Alperen Bosnali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SAC-PhoeniX/AI_Challenge_Express_Server/issues"
+  },
+  "homepage": "https://github.com/SAC-PhoeniX/AI_Challenge_Express_Server#readme"
+}
