@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 app.post('/', jsonParser, (req, res) => {
     res.send("worked");
     data = req.body;
-    console.log(data)
+    console.log("TEAM A SENDS: ", data)
 })
 
 app.listen(4000, () => console.log('listening on port 4000'));
